@@ -1,11 +1,253 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="description"
+        content="SoleStride - Premium footwear for every step of your journey. Discover comfortable, stylish shoes for all occasions.">
+    <meta name="keywords" content="Shoes, Footwear, Sneakers, Boots, Running Shoes, Fashion">
+    <meta name="author" content="SoleStride">
+    <meta property="og:title" content="SoleStride - Step Into Style">
+    <meta property="og:description" content="Premium footwear for every journey">
+    <meta property="og:image" content="./images/shoes-hero.jpg">
+    <meta property="og:url" content="https://solestride.com">
+
+    <title>SoleStride - Premium Footwear</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/design-tokens.css">
+    <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="../css/product.css">
+    <link rel="stylesheet" href="../css/hero.css">
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Shoe-specific hero overrides */
+        .hero-section {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-transform: none;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .featured-categories {
+            padding: 4rem 2rem;
+            background: #f8f9fa;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .category-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .category-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .category-card h3 {
+            padding: 1.5rem 1.5rem 0.5rem;
+            color: #333;
+            font-size: 1.3rem;
+        }
+
+        .category-card p {
+            padding: 0 1.5rem 1.5rem;
+            color: #666;
+        }
+
+        .brand-values {
+            padding: 4rem 2rem;
+            background: white;
+            text-align: center;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .value-item {
+            padding: 2rem;
+        }
+
+        .value-item h3 {
+            color: #2d2d2d;
+            margin: 1rem 0;
+        }
+
+        .value-icon {
+            font-size: 3rem;
+            color: #ff6b35;
+            margin-bottom: 1rem;
+        }
+    </style>
 </head>
+
 <body>
-    
+    <!-- Navbar Section -->
+    <header>
+        <nav class="navbar">
+            <a href="#" class="logo" aria-label="SoleStride Home">SoleStride</a>
+            <div class="navbar-center">
+                <ul>
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="./products.html">Shoes</a></li>
+                    <li><a href="./sale.html">Sale</a></li>
+                    <li><a href="./Categories.html">Collections</a></li>
+                    <li><a href="./contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="navbar-search">
+                <form id="navbarSearchForm" action="#" role="search" autocomplete="off">
+                    <input type="text" id="navbarSearchInput" placeholder="Search shoes..." aria-label="Search shoes">
+                    <button type="submit" aria-label="Search">
+                        <span class="search-icon">🔍</span>
+                    </button>
+                </form>
+            </div>
+            <div class="navbar-cart desktop-cart">
+                <a href="cart.html" aria-label="View Cart">
+                    <span class="cart-icon" aria-hidden="true">🛒</span>
+                    <span class="cart-count" aria-hidden="true">3</span>
+                </a>
+            </div>
+            <div class="hamburger" id="hamburger" aria-label="Toggle Menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="navbar-dropdown" id="navbarDropdown" aria-hidden="true">
+                <ul>
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="./products.html">Shoes</a></li>
+                    <li><a href="./sale.html">Sale</a></li>
+                    <li><a href="./Categories.html">Collections</a></li>
+                    <li><a href="./contact.html">Contact</a></li>
+                    <li class="dropdown-cart"><a href="cart.html" aria-label="View Cart">Cart <span class="cart-count"
+                                aria-hidden="true">3</span></a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>Step Into Comfort & Style</h1>
+            <p class="hero-subtitle">Discover premium footwear engineered for your journey</p>
+            <div class="cta-buttons">
+                <a href="#featured" class="btn btn-primary" aria-label="Shop Now">Shop Collection</a>
+                <a href="./sale.html" class="btn btn-secondary" aria-label="View Sale">Flash Sale - 50% Off</a>
+            </div>
+            <p class="hero-description">
+                Combining innovative technology with timeless design for shoes that move with you.
+            </p>
+        </div>
+        <div class="hero-image">
+            <img src="./images/premium-sneakers-hero.jpg" alt="Premium sneakers on stylish background">
+        </div>
+    </section>
+
+    <!-- Featured Categories -->
+    <section class="featured-categories" id="featured">
+        <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 1rem;">Explore Collections</h2>
+        <p style="text-align: center; color: #666; max-width: 600px; margin: 0 auto 2rem;">Find the perfect pair for
+            every occasion</p>
+
+        <div class="categories-grid">
+            <div class="category-card">
+                <img src="./images/running-shoes-collection.jpg" alt="Running Shoes Collection">
+                <h3>Performance Running</h3>
+                <p>Lightweight shoes with maximum cushioning for your active lifestyle.</p>
+            </div>
+            <div class="category-card">
+                <img src="./images/casual-sneakers.jpg" alt="Casual Sneakers">
+                <h3>Casual Sneakers</h3>
+                <p>Everyday comfort meets street-style fashion.</p>
+            </div>
+            <div class="category-card">
+                <img src="./images/formal-shoes.jpg" alt="Formal Shoes">
+                <h3>Formal & Business</h3>
+                <p>Elegant designs for professional settings and special occasions.</p>
+            </div>
+            <div class="category-card">
+                <img src="./images/hiking-boots.jpg" alt="Hiking Boots">
+                <h3>Outdoor & Hiking</h3>
+                <p>Durable footwear built for adventure and rugged terrain.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brand Values -->
+    <section class="brand-values">
+        <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Why Choose SoleStride</h2>
+        <p style="color: #666; max-width: 600px; margin: 0 auto;">Crafted with precision, designed for life</p>
+
+        <div class="values-grid">
+            <div class="value-item">
+                <div class="value-icon">👟</div>
+                <h3>Premium Materials</h3>
+                <p>Only the finest leathers and sustainable fabrics</p>
+            </div>
+            <div class="value-item">
+                <div class="value-icon">❤️</div>
+                <h3>All-Day Comfort</h3>
+                <p>Orthopedic support with breathable technology</p>
+            </div>
+            <div class="value-item">
+                <div class="value-icon">🌱</div>
+                <h3>Sustainable Design</h3>
+                <p>Eco-friendly manufacturing processes</p>
+            </div>
+            <div class="value-item">
+                <div class="value-icon">✓</div>
+                <h3>2-Year Warranty</h3>
+                <p>Quality guaranteed on every pair</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 SoleStride. Step Into Your Journey.</p>
+        <button class="scroll-to-top" id="scrollToTop" title="Scroll to Top">↑</button>
+    </footer>
+
+    <script src="./script.js" defer></script>
 </body>
+
 </html>

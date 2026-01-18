@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Contact - SoleStride</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/contact.css">
+    
+    <style>
+        /* Shoe brand contact specific styles */
+        .contact-hero {
+            background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .contact-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto 4rem;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+        
+        .contact-info {
+            background: #f8f9fa;
+            padding: 2.5rem;
+            border-radius: 15px;
+        }
+        
+        .contact-info h2 {
+            color: #2d2d2d;
+            margin-bottom: 2rem;
+            font-size: 1.8rem;
+        }
+        
+        .contact-method {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+        }
+        
+        .contact-icon {
+            background: #ff6b35;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            flex-shrink: 0;
+            font-size: 1.2rem;
+        }
+        
+        .contact-details h3 {
+            margin: 0 0 0.5rem;
+            color: #333;
+        }
+        
+        .contact-details p {
+            margin: 0;
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .store-hours {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-top: 2rem;
+            border: 1px solid #eee;
+        }
+        
+        .store-hours h3 {
+            color: #2d2d2d;
+            margin-bottom: 1rem;
+        }
+        
+        .hours-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .hours-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .hours-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .day {
+            color: #333;
+            font-weight: 500;
+        }
+        
+        .time {
+            color: #666;
+        }
+        
+        .faq-section {
+            max-width: 1200px;
+            margin: 0 auto 4rem;
+            padding: 0 2rem;
+        }
+        
+        .faq-section h2 {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 3rem;
+            color: #2d2d2d;
+        }
+        
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .faq-item {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid #eee;
+        }
+        
+        .faq-item h3 {
+            color: #2d2d2d;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        .faq-item p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        @media (max-width: 768px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar Section -->
+    <header>
+        <nav class="navbar">
+            <div class="navbar-left">
+                <a href="#" class="logo">SoleStride</a>
+            </div>
+            <div class="navbar-center">
+                <ul>
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="./products.html">Shoes</a></li>
+                    <li><a href="./sale.html">Sale</a></li>
+                    <li><a href="./Categories.html">Collections</a></li>
+                    <li><a href="./contact.html" class="active">Contact</a></li>
+                </ul>
+            </div>
+            <div class="navbar-search">
+                <form id="navbarSearchForm" action="#" role="search" autocomplete="off">
+                    <input type="text" id="navbarSearchInput" placeholder="Search shoes..." aria-label="Search shoes">
+                    <button type="submit" aria-label="Search">
+                        <span class="search-icon">🔍</span>
+                    </button>
+                </form>
+            </div>
+            <div class="navbar-cart desktop-cart">
+                <a href="cart.html" aria-label="View Cart">
+                    <span class="cart-icon" aria-hidden="true">🛒</span>
+                    <span class="cart-count" aria-hidden="true">3</span>
+                </a>
+            </div>
+            <div class="hamburger" id="hamburger" aria-label="Toggle Menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="navbar-dropdown" id="navbarDropdown" aria-hidden="true">
+                <ul>
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="./products.html">Shoes</a></li>
+                    <li><a href="./sale.html">Sale</a></li>
+                    <li><a href="./Categories.html">Collections</a></li>
+                    <li><a href="./contact.html" class="active">Contact</a></li>
+                    <li class="dropdown-cart"><a href="cart.html" aria-label="View Cart">Cart <span class="cart-count" aria-hidden="true">3</span></a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Contact Hero -->
+    <div class="contact-hero">
+        <h1>Get in Touch</h1>
+        <p>We're here to help you find your perfect fit. Reach out with any questions about our shoes or services.</p>
+    </div>
+
+    <!-- Contact Container -->
+    <div class="contact-container">
+        <!-- Contact Form -->
+        <main class="contact-section">
+            <h2>Send Us a Message</h2>
+            <form id="contactForm" action="#" method="post" novalidate>
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" placeholder="Your full name" required />
+
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="Your email address" required />
+
+                <label for="subject">Subject</label>
+                <select id="subject" name="subject" required>
+                    <option value="">Select a topic</option>
+                    <option value="sizing">Sizing Questions</option>
+                    <option value="order">Order Status</option>
+                    <option value="returns">Returns & Exchanges</option>
+                    <option value="product">Product Information</option>
+                    <option value="wholesale">Wholesale Inquiry</option>
+                    <option value="other">Other</option>
+                </select>
+
+                <label for="message">Message</label>
+                <textarea id="message" name="message" placeholder="Tell us how we can help..." rows="6" required></textarea>
+
+                <button type="submit" class="btn btn-primary">Send Message</button>
+            </form>
+        </main>
+
+        <!-- Contact Information -->
+        <div class="contact-info">
+            <h2>Contact Information</h2>
+            
+            <div class="contact-method">
+                <div class="contact-icon">📍</div>
+                <div class="contact-details">
+                    <h3>Visit Our Store</h3>
+                    <p>123 Shoe Street<br>New York, NY 10001<br>United States</p>
+                </div>
+            </div>
+            
+            <div class="contact-method">
+                <div class="contact-icon">📞</div>
+                <div class="contact-details">
+                    <h3>Call Us</h3>
+                    <p>+1 (800) 555-SHOE<br>Monday - Friday: 9AM - 6PM EST</p>
+                </div>
+            </div>
+            
+            <div class="contact-method">
+                <div class="contact-icon">✉️</div>
+                <div class="contact-details">
+                    <h3>Email Us</h3>
+                    <p>support@solestride.com<br>care@solestride.com</p>
+                </div>
+            </div>
+            
+            <div class="contact-method">
+                <div class="contact-icon">💬</div>
+                <div class="contact-details">
+                    <h3>Live Chat</h3>
+                    <p>Available Monday - Friday<br>9AM - 5PM EST</p>
+                </div>
+            </div>
+            
+            <div class="store-hours">
+                <h3>Store Hours</h3>
+                <ul class="hours-list">
+                    <li>
+                        <span class="day">Monday - Thursday</span>
+                        <span class="time">10:00 AM - 8:00 PM</span>
+                    </li>
+                    <li>
+                        <span class="day">Friday - Saturday</span>
+                        <span class="time">10:00 AM - 9:00 PM</span>
+                    </li>
+                    <li>
+                        <span class="day">Sunday</span>
+                        <span class="time">11:00 AM - 6:00 PM</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <div class="faq-section">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-grid">
+            <div class="faq-item">
+                <h3>How do I find my correct shoe size?</h3>
+                <p>We recommend using our sizing guide available on each product page. You can also visit any of our stores for a professional fitting.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h3>What is your return policy?</h3>
+                <p>We offer a 30-day return policy on all unworn shoes. Returns are free within the US. Shoes must be in original condition with all tags attached.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h3>Do you offer international shipping?</h3>
+                <p>Yes, we ship to over 50 countries worldwide. Shipping costs and delivery times vary by destination.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h3>How do I care for my shoes?</h3>
+                <p>We provide specific care instructions with each pair. Generally, use appropriate cleaners for the material and avoid machine washing.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h3>Are your shoes waterproof?</h3>
+                <p>We offer both waterproof and water-resistant options. Check individual product descriptions for specific water protection features.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h3>Do you have a warranty?</h3>
+                <p>All our shoes come with a 2-year manufacturer's warranty covering defects in materials and workmanship.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 SoleStride. Step Into Your Journey.</p>
+        <button class="scroll-to-top" id="scrollToTop" title="Scroll to Top">↑</button>
+    </footer>
+
+    <script src="../script.js" defer></script>
+</body>
+</html>

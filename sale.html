@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sale - SoleStride</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/sale.css">
+    
+    <style>
+        /* Shoe sale specific styles */
+        .sale-banner {
+            background: linear-gradient(135deg, #ff6b35 0%, #ff8b5c 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .sale-banner h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .sale-banner .discount {
+            font-size: 5rem;
+            font-weight: 800;
+            line-height: 1;
+            margin: 1rem 0;
+            text-shadow: 3px 3px 0 rgba(0,0,0,0.1);
+        }
+        
+        .sale-banner p {
+            font-size: 1.3rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+        
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .countdown-item {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 1rem;
+            border-radius: 10px;
+            min-width: 80px;
+        }
+        
+        .countdown-number {
+            font-size: 2rem;
+            font-weight: 700;
+            display: block;
+        }
+        
+        .countdown-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .sale-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem 4rem;
+        }
+        
+        .sale-section {
+            margin-bottom: 4rem;
+        }
+        
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #eee;
+        }
+        
+        .section-header h2 {
+            font-size: 2rem;
+            color: #333;
+        }
+        
+        .sale-badge {
+            background: #ff6b35;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        .sale-products {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .sale-product {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+        
+        .sale-product:hover {
+            transform: translateY(-10px);
+        }
+        
+        .sale-tag {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: #ff6b35;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-weight: 700;
+            z-index: 1;
+        }
+        
+        .sale-product img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .product-info {
+            padding: 1.5rem;
+        }
+        
+        .product-info h3 {
+            margin: 0 0 0.5rem;
+            color: #333;
+        }
+        
+        .price-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .original-price {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 1.1rem;
+        }
+        
+        .sale-price {
+            color: #ff6b35;
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+        
+        .savings {
+            background: #ffebee;
+            color: #ff6b35;
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        .add-to-cart-sale {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2d2d2d;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            text-align: center;
+            text-decoration: none;
+        }
+        
+        .add-to-cart-sale:hover {
+            background: #ff6b35;
+        }
+        
+        .clearance-banner {
+            background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            border-radius: 15px;
+            margin: 3rem 0;
+        }
+        
+        .clearance-banner h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .flash-sale {
+            background: #fff8e1;
+            border: 3px dashed #ff6b35;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            margin: 2rem 0;
+        }
+        
+        .flash-sale h3 {
+            color: #ff6b35;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar Section -->
+    <header>
+        <nav class="navbar">
+            <a href="#" class="logo">SoleStride</a>
+            <div class="navbar-center">
+                <ul>
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="./products.html">Shoes</a></li>
+                    <li><a href="./sale.html" class="active">Sale</a></li>
+                    <li><a href="./Categories.html">Collections</a></li>
+                    <li><a href="./contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="navbar-search">
+                <form id="navbarSearchForm" action="#" role="search" autocomplete="off">
+                    <input type="text" id="navbarSearchInput" placeholder="Search sale items..." aria-label="Search sale items">
+                    <button type="submit" aria-label="Search">
+                        <span class="search-icon">🔍</span>
+                    </button>
+                </form>
+            </div>
+            <div class="navbar-cart desktop-cart">
+                <a href="cart.html" aria-label="View Cart">
+                    <span class="cart-icon" aria-hidden="true">🛒</span>
+                    <span class="cart-count" aria-hidden="true">3</span>
+                </a>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="navbar-dropdown" id="navbarDropdown" aria-hidden="true">
+                <ul>
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="./products.html">Shoes</a></li>
+                    <li><a href="./sale.html" class="active">Sale</a></li>
+                    <li><a href="./Categories.html">Collections</a></li>
+                    <li><a href="./contact.html">Contact</a></li>
+                    <li class="dropdown-cart"><a href="cart.html" aria-label="View Cart">Cart <span class="cart-count" aria-hidden="true">3</span></a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Sale Banner -->
+    <div class="sale-banner">
+        <h1>End of Season Sale</h1>
+        <div class="discount">UP TO 60% OFF</div>
+        <p>Huge savings on premium footwear. Limited time offer on selected styles.</p>
+        
+        <div class="countdown">
+            <div class="countdown-item">
+                <span class="countdown-number" id="days">03</span>
+                <span class="countdown-label">Days</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-number" id="hours">12</span>
+                <span class="countdown-label">Hours</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-number" id="minutes">45</span>
+                <span class="countdown-label">Minutes</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-number" id="seconds">30</span>
+                <span class="countdown-label">Seconds</span>
+            </div>
+        </div>
+        
+        <button style="padding: 15px 40px; background: white; color: #ff6b35; border: none; border-radius: 25px; font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 1.1rem; cursor: pointer;">
+            Shop All Deals
+        </button>
+    </div>
+
+    <!-- Flash Sale -->
+    <div class="flash-sale">
+        <h3>⚡ FLASH SALE: 50% OFF SELECTED STYLES</h3>
+        <p>Ends in <strong>2 hours</strong> - Don't miss out!</p>
+    </div>
+
+    <!-- Sale Grid -->
+    <div class="sale-grid">
+        <!-- Running Shoes Sale -->
+        <div class="sale-section">
+            <div class="section-header">
+                <h2>Running Shoes Sale</h2>
+                <span class="sale-badge">50-60% OFF</span>
+            </div>
+            
+            <div class="sale-products">
+                <div class="sale-product">
+                    <div class="sale-tag">60% OFF</div>
+                    <img src="./images/sale-runner-1.jpg" alt="Pro Runner X - Sale">
+                    <div class="product-info">
+                        <h3>Pro Runner X</h3>
+                        <div class="price-container">
+                            <span class="original-price">$159.99</span>
+                            <span class="sale-price">$63.99</span>
+                            <span class="savings">Save $96</span>
+                        </div>
+                        <p>Lightweight performance running shoes with carbon fiber plate.</p>
+                        <a href="#" class="add-to-cart-sale">Add to Cart</a>
+                    </div>
+                </div>
+                
+                <div class="sale-product">
+                    <div class="sale-tag">55% OFF</div>
+                    <img src="./images/sale-runner-2.jpg" alt="Trail Master - Sale">
+                    <div class="product-info">
+                        <h3>Trail Master</h3>
+                        <div class="price-container">
+                            <span class="original-price">$129.99</span>
+                            <span class="sale-price">$58.49</span>
+                            <span class="savings">Save $71.50</span>
+                        </div>
+                        <p>Waterproof trail running shoes with enhanced grip.</p>
+                        <a href="#" class="add-to-cart-sale">Add to Cart</a>
+                    </div>
+                </div>
+                
+                <div class="sale-product">
+                    <div class="sale-tag">50% OFF</div>
+                    <img src="./images/sale-runner-3.jpg" alt="Marathon Elite - Sale">
+                    <div class="product-info">
+                        <h3>Marathon Elite</h3>
+                        <div class="price-container">
+                            <span class="original-price">$179.99</span>
+                            <span class="sale-price">$89.99</span>
+                            <span class="savings">Save $90</span>
+                        </div>
+                        <p>Competition running shoes with maximum energy return.</p>
+                        <a href="#" class="add-to-cart-sale">Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Casual Shoes Sale -->
+        <div class="sale-section">
+            <div class="section-header">
+                <h2>Casual Sneakers Sale</h2>
+                <span class="sale-badge">40-50% OFF</span>
+            </div>
+            
+            <div class="sale-products">
+                <div class="sale-product">
+                    <div class="sale-tag">50% OFF</div>
+                    <img src="./images/sale-casual-1.jpg" alt="Urban Classic - Sale">
+                    <div class="product-info">
+                        <h3>Urban Classic</h3>
+                        <div class="price-container">
+                            <span class="original-price">$89.99</span>
+                            <span class="sale-price">$44.99</span>
+                            <span class="savings">Save $45</span>
+                        </div>
+                        <p>Versatile everyday sneakers with memory foam insole.</p>
+                        <a href="#" class="add-to-cart-sale">Add to Cart</a>
+                    </div>
+                </div>
+                
+                <div class="sale-product">
+                    <div class="sale-tag">45% OFF</div>
+                    <img src="./images/sale-casual-2.jpg" alt="Canvas Comfort - Sale">
+                    <div class="product-info">
+                        <h3>Canvas Comfort</h3>
+                        <div class="price-container">
+                            <span class="original-price">$69.99</span>
+                            <span class="sale-price">$38.49</span>
+                            <span class="savings">Save $31.50</span>
+                        </div>
+                        <p>Breathable canvas sneakers with orthopedic support.</p>
+                        <a href="#" class="add-to-cart-sale">Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Clearance Section -->
+        <div class="clearance-banner">
+            <h2>Clearance Section</h2>
+            <p>Last chance to grab these styles at unbelievable prices</p>
+            <button style="padding: 12px 30px; background: #ff6b35; color: white; border: none; border-radius: 25px; font-family: 'Poppins', sans-serif; font-weight: 600; cursor: pointer; margin-top: 1rem;">
+                View Clearance
+            </button>
+        </div>
+
+        <!-- Formal Shoes Sale -->
+        <div class="sale-section">
+            <div class="section-header">
+                <h2>Formal Shoes Sale</h2>
+                <span class="sale-badge">35-45% OFF</span>
+            </div>
+            
+            <div class="sale-products">
+                <div class="sale-product">
+                    <div class="sale-tag">45% OFF</div>
+                    <img src="./images/sale-formal-1.jpg" alt="Oxford Premium - Sale">
+                    <div class="product-info">
+                        <h3>Oxford Premium</h3>
+                        <div class="price-container">
+                            <span class="original-price">$199.99</span>
+                            <span class="sale-price">$109.99</span>
+                            <span class="savings">Save $90</span>
+                        </div>
+                        <p>Full-grain leather oxford shoes with cushioned insoles.</p>
+                        <a href="#" class="add-to-cart-sale">Add to Cart</a>
+                    </div>
+                </div>
+                
+                <div class="sale-product">
+                    <div class="sale-tag">40% OFF</div>
+                    <img src="./images/sale-formal-2.jpg" alt="Derby Executive - Sale">
+                    <div class="product-info">
+                        <h3>Derby Executive</h3>
+                        <div class="price-container">
+                            <span class="original-price">$169.99</span>
+                            <span class="sale-price">$101.99</span>
+                            <span class="savings">Save $68</span>
+                        </div>
+                        <p>Business casual derby shoes with slip-resistant soles.</p>
+                        <a href="#" class="add-to-cart-sale">Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 SoleStride. Step Into Your Journey.</p>
+        <button class="scroll-to-top" id="scrollToTop" title="Scroll to Top">↑</button>
+    </footer>
+    
+    <script src="../script.js" defer></script>
+    
+    <script>
+        // Countdown timer
+        function updateCountdown() {
+            const now = new Date();
+            const endDate = new Date();
+            endDate.setDate(now.getDate() + 3); // Sale ends in 3 days
+            
+            const timeLeft = endDate - now;
+            
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+            
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+        }
+        
+        // Update countdown every second
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+</body>
+</html>

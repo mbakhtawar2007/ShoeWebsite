@@ -1,0 +1,306 @@
+/* Global Variables */
+:root {
+    --primary-color: #FF5722;
+    --hover-color: #FF7043;
+    --text-color: white;
+    --fallback-bg: #333;
+    --gradient-bg: linear-gradient(to bottom right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
+    --border-radius: 25px;
+}
+
+/* Hero Section */
+.hero-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 120px 40px;
+    background: var(--gradient-bg), url('path-to-your-background-image.jpg') center/cover no-repeat;
+    color: var(--text-color);
+    min-height: 500px;
+    text-align: center;
+    border-bottom: 3px solid var(--primary-color);
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    background-color: var(--fallback-bg);
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.hero-content {
+    max-width: 700px;
+    z-index: 1;
+    text-align: center;
+    margin: auto;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 2px;
+    line-height: 1.3;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    animation: fadeInUp 1s ease-out;
+}
+
+.hero-content .hero-subtitle {
+    font-size: 1.3rem;
+    font-family: 'Roboto', sans-serif;
+    margin-bottom: 20px;
+    animation: fadeInUp 1.5s ease-out;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.cta-buttons .btn {
+    padding: 15px 30px;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    text-decoration: none;
+    border-radius: var(--border-radius);
+    font-size: 1.1rem;
+    font-family: 'Roboto', sans-serif;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.cta-buttons .btn:hover {
+    background-color: var(--hover-color);
+    transform: translateY(-5px);
+}
+
+.cta-buttons .btn:focus {
+    outline: 2px solid var(--primary-color);
+}
+
+.cta-buttons .btn:active {
+    transform: scale(0.95);
+}
+
+.hero-description {
+    font-size: 1.1rem;
+    font-family: 'Roboto', sans-serif;
+    margin-bottom: 20px;
+    opacity: 0.8;
+    animation: fadeInUp 2s ease-out;
+    padding: 10px 15px;
+}
+
+.newsletter {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.newsletter input {
+    padding: 12px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: var(--border-radius);
+    width: 250px;
+    transition: border 0.3s ease;
+}
+
+.newsletter input:focus {
+    border-color: var(--primary-color);
+}
+
+.newsletter button {
+    padding: 12px 25px;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.newsletter button:hover {
+    background-color: var(--hover-color);
+}
+
+.hero-image img {
+    max-width: 100%;
+    max-height: 450px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: transform 0.5s ease, filter 0.5s ease;
+}
+
+.hero-image img:hover {
+    transform: scale(1.05);
+    filter: brightness(0.8);
+}
+
+/* Media Queries */
+
+/* Mobile Devices: 320px to 479px */
+@media (max-width: 479px) {
+    .hero-section {
+        flex-direction: column;
+        text-align: center;
+        padding: 80px 20px;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-content .hero-subtitle {
+        font-size: 1.1rem;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+    }
+
+    .hero-image img {
+        max-width: 100%;
+        margin-top: 20px;
+    }
+
+    .newsletter input,
+    .newsletter button {
+        width: 100%;
+    }
+}
+
+/* Tablets / iPads: 480px to 767px */
+@media (min-width: 480px) and (max-width: 767px) {
+    .hero-section {
+        flex-direction: column;
+        padding: 100px 20px;
+    }
+
+    .hero-content h1 {
+        font-size: 2.8rem;
+    }
+
+    .hero-content .hero-subtitle {
+        font-size: 1.2rem;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+    }
+
+    .hero-image img {
+        margin-top: 20px;
+    }
+
+    .newsletter input,
+    .newsletter button {
+        width: 200px;
+    }
+}
+
+/* Laptops / Small Screens: 768px to 1023px */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .hero-section {
+        flex-direction: row;
+        padding: 120px 40px;
+    }
+
+    .hero-content h1 {
+        font-size: 3rem;
+    }
+
+    .hero-content .hero-subtitle {
+        font-size: 1.3rem;
+    }
+
+    .cta-buttons {
+        flex-direction: row;
+    }
+
+    .newsletter input,
+    .newsletter button {
+        width: 250px;
+    }
+}
+
+/* Desktops / Large Screens: 1024px to 1199px */
+@media (min-width: 1024px) and (max-width: 1199px) {
+    .hero-section {
+        padding: 140px 60px;
+    }
+
+    .hero-content h1 {
+        font-size: 3.5rem;
+    }
+
+    .hero-content .hero-subtitle {
+        font-size: 1.4rem;
+    }
+
+    .cta-buttons {
+        flex-direction: row;
+    }
+
+    .newsletter input,
+    .newsletter button {
+        width: 300px;
+    }
+}
+
+/* Extra-Large Screens: 1200px and above */
+@media (min-width: 1200px) {
+    .hero-section {
+        padding: 150px 80px;
+    }
+
+    .hero-content h1 {
+        font-size: 4rem;
+    }
+
+    .hero-content .hero-subtitle {
+        font-size: 1.5rem;
+    }
+
+    .cta-buttons {
+        flex-direction: row;
+    }
+
+    .newsletter input,
+    .newsletter button {
+        width: 350px;
+    }
+}
+
+/* Fade-in Animations */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Reduce Motion for Users who Prefer Less Motion */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}

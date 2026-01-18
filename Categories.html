@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collections - SoleStride</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/categories.css">
+
+    <style>
+        /* Shoe collection specific styles */
+        .collections-header {
+            background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .collections-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .collections-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .collection-hero {
+            max-width: 1400px;
+            margin: 0 auto 4rem;
+            padding: 0 2rem;
+        }
+
+        .hero-collection {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('./images/collection-banner.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 6rem 4rem;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .hero-collection h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-collection p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .collection-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem 4rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .collection-card {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            height: 400px;
+            transition: transform 0.3s ease;
+        }
+
+        .collection-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .collection-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .collection-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .collection-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+            color: white;
+            padding: 2rem;
+        }
+
+        .collection-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .collection-count {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-bottom: 1rem;
+        }
+
+        .collection-cta {
+            display: inline-block;
+            padding: 10px 25px;
+            background: #ff6b35;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+
+        .collection-cta:hover {
+            background: #ff8b5c;
+        }
+
+        .collection-features {
+            max-width: 1400px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-box {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-box .icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-box h4 {
+            color: #2d2d2d;
+            margin-bottom: 1rem;
+        }
+
+        .feature-box p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar Section -->
+    <header>
+        <nav class="navbar">
+            <a href="#" class="logo">SoleStride</a>
+            <div class="navbar-center">
+                <ul>
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="./products.html">Shoes</a></li>
+                    <li><a href="./sale.html">Sale</a></li>
+                    <li><a href="./Categories.html" class="active">Collections</a></li>
+                    <li><a href="./contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="navbar-search">
+                <form id="navbarSearchForm" action="#" role="search" autocomplete="off">
+                    <input type="text" id="navbarSearchInput" placeholder="Search collections..."
+                        aria-label="Search collections">
+                    <button type="submit" aria-label="Search">
+                        <span class="search-icon">🔍</span>
+                    </button>
+                </form>
+            </div>
+            <div class="navbar-cart desktop-cart">
+                <a href="cart.html" aria-label="View Cart">
+                    <span class="cart-icon" aria-hidden="true">🛒</span>
+                    <span class="cart-count" aria-hidden="true">3</span>
+                </a>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="navbar-dropdown" id="navbarDropdown" aria-hidden="true">
+                <ul>
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="./products.html">Shoes</a></li>
+                    <li><a href="./sale.html">Sale</a></li>
+                    <li><a href="./Categories.html" class="active">Collections</a></li>
+                    <li><a href="./contact.html">Contact</a></li>
+                    <li class="dropdown-cart"><a href="cart.html" aria-label="View Cart">Cart <span class="cart-count"
+                                aria-hidden="true">3</span></a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Collections Header -->
+    <div class="collections-header">
+        <h1>Our Collections</h1>
+        <p>Curated selections of premium footwear for every aspect of your life</p>
+    </div>
+
+    <!-- Hero Collection -->
+    <div class="collection-hero">
+        <div class="hero-collection">
+            <h2>Signature Collection</h2>
+            <p>Our flagship line featuring innovative technology and premium materials. Experience unmatched comfort and
+                style.</p>
+            <a href="./products.html?collection=signature" class="collection-cta">Explore Now</a>
+        </div>
+    </div>
+
+    <!-- Collections Grid -->
+    <div class="collection-grid">
+        <div class="collection-card">
+            <img src="./images/running-collection.jpg" alt="Performance Running Collection">
+            <div class="collection-info">
+                <h3>Performance Running</h3>
+                <p class="collection-count">24 products</p>
+                <p>Engineered for speed, comfort, and endurance. Lightweight designs with advanced cushioning.</p>
+                <a href="./products.html?category=running" class="collection-cta">View Collection</a>
+            </div>
+        </div>
+
+        <div class="collection-card">
+            <img src="./images/casual-collection.jpg" alt="Casual Everyday Collection">
+            <div class="collection-info">
+                <h3>Casual Everyday</h3>
+                <p class="collection-count">18 products</p>
+                <p>Versatile styles that blend comfort with contemporary fashion for daily wear.</p>
+                <a href="./products.html?category=casual" class="collection-cta">View Collection</a>
+            </div>
+        </div>
+
+        <div class="collection-card">
+            <img src="./images/formal-collection.jpg" alt="Formal & Business Collection">
+            <div class="collection-info">
+                <h3>Formal & Business</h3>
+                <p class="collection-count">16 products</p>
+                <p>Sophisticated designs crafted from premium leathers for professional settings.</p>
+                <a href="./products.html?category=formal" class="collection-cta">View Collection</a>
+            </div>
+        </div>
+
+        <div class="collection-card">
+            <img src="./images/sports-collection.jpg" alt="Sports & Training Collection">
+            <div class="collection-info">
+                <h3>Sports & Training</h3>
+                <p class="collection-count">22 products</p>
+                <p>High-performance footwear designed for gym, court, and field activities.</p>
+                <a href="./products.html?category=sports" class="collection-cta">View Collection</a>
+            </div>
+        </div>
+
+        <div class="collection-card">
+            <img src="./images/outdoor-collection.jpg" alt="Outdoor Adventure Collection">
+            <div class="collection-info">
+                <h3>Outdoor Adventure</h3>
+                <p class="collection-count">15 products</p>
+                <p>Durable, weather-resistant footwear built for hiking and outdoor exploration.</p>
+                <a href="./products.html?category=outdoor" class="collection-cta">View Collection</a>
+            </div>
+        </div>
+
+        <div class="collection-card">
+            <img src="./images/limited-collection.jpg" alt="Limited Edition Collection">
+            <div class="collection-info">
+                <h3>Limited Edition</h3>
+                <p class="collection-count">8 products</p>
+                <p>Exclusive designs with unique materials and collaborations with top artists.</p>
+                <a href="./products.html?collection=limited" class="collection-cta">View Collection</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Collection Features -->
+    <div class="collection-features">
+        <div class="feature-box">
+            <div class="icon">👟</div>
+            <h4>Expert Craftsmanship</h4>
+            <p>Each pair is meticulously crafted by skilled artisans using time-honored techniques.</p>
+        </div>
+
+        <div class="feature-box">
+            <div class="icon">🌱</div>
+            <h4>Sustainable Materials</h4>
+            <p>We prioritize eco-friendly materials and responsible manufacturing processes.</p>
+        </div>
+
+        <div class="feature-box">
+            <div class="icon">💡</div>
+            <h4>Innovative Technology</h4>
+            <p>Proprietary cushioning and support systems developed through biomechanical research.</p>
+        </div>
+
+        <div class="feature-box">
+            <div class="icon">📏</div>
+            <h4>Perfect Fit Guarantee</h4>
+            <p>Comprehensive sizing options and free returns to ensure your perfect fit.</p>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 SoleStride. Step Into Your Journey.</p>
+        <button class="scroll-to-top" id="scrollToTop" title="Scroll to Top">↑</button>
+    </footer>
+
+    <script src="../script.js" defer></script>
+</body>
+
+</html>

@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Shoes - SoleStride</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/product.css">
+    <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    
+    <style>
+        /* Shoe-specific product page styles */
+        .page-header {
+            background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .page-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .product-filters {
+            max-width: 1400px;
+            margin: 0 auto 3rem;
+            padding: 0 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .filter-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
+        }
+        
+        .filter-group label {
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .filter-btn {
+            padding: 8px 20px;
+            border: 2px solid #e0e0e0;
+            background: white;
+            border-radius: 25px;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: #ff6b35;
+            color: white;
+            border-color: #ff6b35;
+        }
+        
+        .sort-select {
+            padding: 10px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            background: white;
+        }
+        
+        .results-count {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .shoe-sizes {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 1rem 0;
+        }
+        
+        .size-btn {
+            width: 40px;
+            height: 40px;
+            border: 1px solid #ddd;
+            background: white;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+        
+        .size-btn:hover {
+            border-color: #ff6b35;
+            color: #ff6b35;
+        }
+        
+        .size-btn.selected {
+            background: #ff6b35;
+            color: white;
+            border-color: #ff6b35;
+        }
+        
+        .shoe-features {
+            display: flex;
+            gap: 10px;
+            margin: 10px 0;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .feature-tag {
+            background: #f0f0f0;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+        }
+        
+        .product-item {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: #ff6b35;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 1;
+        }
+        
+        .quick-view {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255, 255, 255, 0.95);
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .product-item:hover .quick-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar Section -->
+    <header>
+        <nav class="navbar">
+            <a href="#" class="logo">SoleStride</a>
+            <div class="navbar-center">
+                <ul>
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="./products.html" class="active">Shoes</a></li>
+                    <li><a href="./sale.html">Sale</a></li>
+                    <li><a href="./Categories.html">Collections</a></li>
+                    <li><a href="./contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="navbar-search">
+                <form id="navbarSearchForm" action="#" role="search" autocomplete="off">
+                    <input type="text" id="navbarSearchInput" placeholder="Search shoes..." aria-label="Search shoes">
+                    <button type="submit" aria-label="Search">
+                        <span class="search-icon">🔍</span>
+                    </button>
+                </form>
+            </div>
+            <div class="navbar-cart desktop-cart">
+                <a href="cart.html" aria-label="View Cart">
+                    <span class="cart-icon" aria-hidden="true">🛒</span>
+                    <span class="cart-count" aria-hidden="true">3</span>
+                </a>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="navbar-dropdown" id="navbarDropdown" aria-hidden="true">
+                <ul>
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="./products.html" class="active">Shoes</a></li>
+                    <li><a href="./sale.html">Sale</a></li>
+                    <li><a href="./Categories.html">Collections</a></li>
+                    <li><a href="./contact.html">Contact</a></li>
+                    <li class="dropdown-cart"><a href="cart.html" aria-label="View Cart">Cart <span class="cart-count" aria-hidden="true">3</span></a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <h1>Our Shoe Collection</h1>
+        <p>Discover premium footwear designed for comfort, style, and performance</p>
+    </div>
+
+    <!-- Product Filters -->
+    <div class="product-filters">
+        <div class="filter-group">
+            <span class="results-count">Showing products</span>
+        </div>
+        
+        <div class="filter-group">
+            <label for="category">Category:</label>
+            <select id="category">
+                <option value="">All Categories</option>
+                <option value="running">Running</option>
+                <option value="casual">Casual</option>
+                <option value="formal">Formal</option>
+                <option value="sports">Sports</option>
+            </select>
+        </div>
+        
+        <div class="filter-group">
+            <label for="price">Max Price: $<span id="priceValue">150</span></label>
+            <input type="range" id="price" min="50" max="150" value="150" />
+        </div>
+        
+        <div class="filter-group">
+            <label for="sort">Sort by:</label>
+            <select id="sort" class="sort-select">
+                <option value="name-asc">Name: A-Z</option>
+                <option value="name-desc">Name: Z-A</option>
+                <option value="price-asc">Price: Low to High</option>
+                <option value="price-desc">Price: High to Low</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Product Section -->
+    <section class="product-section">
+        <div class="product-grid">
+            <!-- Running Shoes -->
+            <div class="product-item" data-category="running" data-price="129.99">
+                <div class="product-badge">New</div>
+                <button class="quick-view">Quick View</button>
+                <img src="./images/air-runner-pro.jpg" alt="Air Runner Pro - Performance Running Shoes">
+                <h3>Air Runner Pro</h3>
+                <p class="price">$129.99</p>
+                <div class="shoe-features">
+                    <span class="feature-tag">Lightweight</span>
+                    <span class="feature-tag">Cushioned</span>
+                </div>
+                <div class="shoe-sizes">
+                    <button class="size-btn">7</button>
+                    <button class="size-btn">8</button>
+                    <button class="size-btn selected">9</button>
+                    <button class="size-btn">10</button>
+                    <button class="size-btn">11</button>
+                </div>
+                <a href="#" class="add-to-cart">Add to Cart</a>
+            </div>
+            
+            <div class="product-item" data-category="running" data-price="89.99">
+                <div class="product-badge">Best Seller</div>
+                <button class="quick-view">Quick View</button>
+                <img src="./images/trail-blazer.jpg" alt="Trail Blazer - Outdoor Running Shoes">
+                <h3>Trail Blazer</h3>
+                <p class="price">$89.99</p>
+                <div class="shoe-features">
+                    <span class="feature-tag">Waterproof</span>
+                    <span class="feature-tag">Grip Sole</span>
+                </div>
+                <div class="shoe-sizes">
+                    <button class="size-btn">7</button>
+                    <button class="size-btn">8</button>
+                    <button class="size-btn">9</button>
+                    <button class="size-btn selected">10</button>
+                    <button class="size-btn">11</button>
+                </div>
+                <a href="#" class="add-to-cart">Add to Cart</a>
+            </div>
+
+            <!-- Casual Shoes -->
+            <div class="product-item" data-category="casual" data-price="79.99">
+                <button class="quick-view">Quick View</button>
+                <img src="./images/urban-stride.jpg" alt="Urban Stride - Casual Sneakers">
+                <h3>Urban Stride</h3>
+                <p class="price">$79.99</p>
+                <div class="shoe-features">
+                    <span class="feature-tag">Breathable</span>
+                    <span class="feature-tag">Flexible</span>
+                </div>
+                <div class="shoe-sizes">
+                    <button class="size-btn">7</button>
+                    <button class="size-btn selected">8</button>
+                    <button class="size-btn">9</button>
+                    <button class="size-btn">10</button>
+                </div>
+                <a href="#" class="add-to-cart">Add to Cart</a>
+            </div>
+            
+            <div class="product-item" data-category="casual" data-price="69.99">
+                <button class="quick-view">Quick View</button>
+                <img src="./images/canvas-classic.jpg" alt="Canvas Classic - Everyday Sneakers">
+                <h3>Canvas Classic</h3>
+                <p class="price">$69.99</p>
+                <div class="shoe-features">
+                    <span class="feature-tag">Comfort Fit</span>
+                    <span class="feature-tag">Washable</span>
+                </div>
+                <div class="shoe-sizes">
+                    <button class="size-btn">7</button>
+                    <button class="size-btn">8</button>
+                    <button class="size-btn selected">9</button>
+                    <button class="size-btn">10</button>
+                </div>
+                <a href="#" class="add-to-cart">Add to Cart</a>
+            </div>
+
+            <!-- Formal Shoes -->
+            <div class="product-item" data-category="formal" data-price="149.99">
+                <div class="product-badge">Premium</div>
+                <button class="quick-view">Quick View</button>
+                <img src="./images/executive-oxford.jpg" alt="Executive Oxford - Formal Leather Shoes">
+                <h3>Executive Oxford</h3>
+                <p class="price">$149.99</p>
+                <div class="shoe-features">
+                    <span class="feature-tag">Genuine Leather</span>
+                    <span class="feature-tag">Cushioned Insole</span>
+                </div>
+                <div class="shoe-sizes">
+                    <button class="size-btn">8</button>
+                    <button class="size-btn selected">9</button>
+                    <button class="size-btn">10</button>
+                    <button class="size-btn">11</button>
+                </div>
+                <a href="#" class="add-to-cart">Add to Cart</a>
+            </div>
+            
+            <div class="product-item" data-category="formal" data-price="119.99">
+                <button class="quick-view">Quick View</button>
+                <img src="./images/derby-leather.jpg" alt="Derby Leather - Business Casual Shoes">
+                <h3>Derby Leather</h3>
+                <p class="price">$119.99</p>
+                <div class="shoe-features">
+                    <span class="feature-tag">Full Grain Leather</span>
+                    <span class="feature-tag">Anti-Slip</span>
+                </div>
+                <div class="shoe-sizes">
+                    <button class="size-btn">8</button>
+                    <button class="size-btn">9</button>
+                    <button class="size-btn selected">10</button>
+                    <button class="size-btn">11</button>
+                </div>
+                <a href="#" class="add-to-cart">Add to Cart</a>
+            </div>
+
+            <!-- Sports Shoes -->
+            <div class="product-item" data-category="sports" data-price="109.99">
+                <div class="product-badge">Sale</div>
+                <button class="quick-view">Quick View</button>
+                <img src="./images/court-master.jpg" alt="Court Master - Sports Shoes">
+                <h3>Court Master</h3>
+                <p class="price"><span style="text-decoration: line-through; color: #999;">$139.99</span> $109.99</p>
+                <div class="shoe-features">
+                    <span class="feature-tag">Ankle Support</span>
+                    <span class="feature-tag">Shock Absorption</span>
+                </div>
+                <div class="shoe-sizes">
+                    <button class="size-btn">8</button>
+                    <button class="size-btn selected">9</button>
+                    <button class="size-btn">10</button>
+                </div>
+                <a href="#" class="add-to-cart">Add to Cart</a>
+            </div>
+            
+            <div class="product-item" data-category="sports" data-price="99.99">
+                <button class="quick-view">Quick View</button>
+                <img src="./images/gym-essential.jpg" alt="Gym Essential - Training Shoes">
+                <h3>Gym Essential</h3>
+                <p class="price">$99.99</p>
+                <div class="shoe-features">
+                    <span class="feature-tag">Stability</span>
+                    <span class="feature-tag">Flexible</span>
+                </div>
+                <div class="shoe-sizes">
+                    <button class="size-btn">8</button>
+                    <button class="size-btn">9</button>
+                    <button class="size-btn selected">10</button>
+                </div>
+                <a href="#" class="add-to-cart">Add to Cart</a>
+            </div>
+        </div>
+        
+        <!-- Pagination -->
+        <div style="text-align: center; margin-top: 4rem;">
+            <button style="padding: 12px 30px; background: #ff6b35; color: white; border: none; border-radius: 25px; font-family: 'Poppins', sans-serif; font-weight: 600; cursor: pointer;">
+                Load More Shoes
+            </button>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 SoleStride. Step Into Your Journey.</p>
+        <button class="scroll-to-top" id="scrollToTop" title="Scroll to Top">↑</button>
+    </footer>
+    
+    <script src="./script.js" defer></script>
+</body>
+</html>

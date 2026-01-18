@@ -1,0 +1,326 @@
+/* Shoe Brand Navbar Styling */
+:root {
+    --primary-color: #ff6b35; /* Vibrant orange for shoe brand */
+    --secondary-color: #2d2d2d; /* Dark background */
+    --text-color: #ffffff;
+    --hover-color: #ff8b5c;
+    --bg-color: #ffffff;
+    --accent-color: #4ecdc4; /* Teal accent */
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    color: #333;
+}
+
+header {
+    position: sticky;
+    z-index: 1000;
+    top: 0;
+    background-color: var(--secondary-color);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border-bottom: 3px solid var(--primary-color);
+}
+
+/* Navbar Styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-decoration: none;
+    color: var(--text-color);
+    letter-spacing: 1px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.logo::before {
+    content: '👟';
+    margin-right: 8px;
+    font-size: 1.6rem;
+}
+
+/* Navbar Center Menu */
+.navbar-center ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: none;
+    flex-direction: column;
+}
+
+.navbar-center ul.active {
+    display: flex;
+}
+
+.navbar-center ul li {
+    margin: 0 15px;
+}
+
+.navbar-center ul li a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.navbar-center ul li a:hover,
+.navbar-center ul li a.active {
+    color: var(--primary-color);
+    background: rgba(255, 107, 53, 0.1);
+}
+
+.navbar-center ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.navbar-center ul li a:hover::after,
+.navbar-center ul li a.active::after {
+    width: 80%;
+}
+
+/* Search Bar */
+.navbar-search {
+    display: flex;
+    align-items: center;
+    margin: 0 1rem;
+    flex-grow: 1;
+    max-width: 400px;
+}
+
+.navbar-search form {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 5px 15px;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+.navbar-search form:focus-within {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: var(--primary-color);
+}
+
+.navbar-search input[type="text"] {
+    border: none;
+    outline: none;
+    background: transparent;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95rem;
+    padding: 8px 0;
+    width: 100%;
+    color: white;
+}
+
+.navbar-search input[type="text"]::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navbar-search button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0 6px;
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.8);
+    display: flex;
+    align-items: center;
+    transition: color 0.3s ease;
+}
+
+.navbar-search button:hover {
+    color: var(--primary-color);
+}
+
+/* Cart Icon */
+.navbar-cart.desktop-cart {
+    display: flex;
+    align-items: center;
+    margin-left: 1rem;
+}
+
+.navbar-cart a {
+    position: relative;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: background 0.3s ease;
+}
+
+.navbar-cart a:hover {
+    background: rgba(255, 107, 53, 0.1);
+}
+
+.navbar-cart .cart-icon {
+    font-size: 1.5rem;
+    color: var(--text-color);
+}
+
+.navbar-cart .cart-count {
+    background: var(--primary-color);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 50%;
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    min-width: 18px;
+    text-align: center;
+}
+
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 20px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.hamburger span {
+    background-color: var(--text-color);
+    height: 3px;
+    width: 100%;
+    border-radius: 3px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translateY(8px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translateY(-8px);
+}
+
+/* Navbar Dropdown */
+.navbar-dropdown {
+    position: fixed;
+    top: 0;
+    right: -300px;
+    width: 280px;
+    height: 100vh;
+    background: var(--secondary-color);
+    color: var(--text-color);
+    padding: 80px 0 30px;
+    z-index: 1000;
+    transition: right 0.3s ease;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+}
+
+.navbar-dropdown.active {
+    right: 0;
+}
+
+.navbar-dropdown ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-dropdown ul li {
+    margin: 0;
+}
+
+.navbar-dropdown ul li a {
+    display: block;
+    padding: 15px 30px;
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 1.1rem;
+    border-left: 4px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.navbar-dropdown ul li a:hover,
+.navbar-dropdown ul li a.active {
+    background: rgba(255, 107, 53, 0.1);
+    border-left-color: var(--primary-color);
+    padding-left: 35px;
+}
+
+.navbar-dropdown .dropdown-cart {
+    margin-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .navbar {
+        padding: 15px 3%;
+    }
+    
+    .navbar-center ul {
+        display: none;
+    }
+    
+    .hamburger {
+        display: flex;
+    }
+    
+    .navbar-search {
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar-search {
+        display: none;
+    }
+    
+    .navbar-dropdown {
+        width: 100%;
+        right: -100%;
+    }
+    
+    .logo {
+        font-size: 1.5rem;
+    }
+}
+
+@media (min-width: 1025px) {
+    .navbar-center ul {
+        display: flex;
+        flex-direction: row;
+    }
+    
+    .navbar-dropdown {
+        display: none !important;
+    }
+}
